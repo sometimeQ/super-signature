@@ -176,7 +176,7 @@ func signature(appleAccount model.AppleAccount, devicesId string, applePackage m
 		ipaDownloadHost = conf.Config.ApplePath.URL + "/api/v1/download?id=" + ipaID
 	}
 
-	// 生成IPA下载plist
+		// 生成IPA下载plist
 	var plistContent = fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -192,6 +192,22 @@ func signature(appleAccount model.AppleAccount, devicesId string, applePackage m
                                     <key>url</key>
                                     <string>%s</string>
                                 </dict>
+								 <dict>
+								   	<key>kind</key>
+								   	<string>display-image</string>
+								   	<key>needs-shine</key>
+								   	<true/>
+								   	<key>url</key>
+								   	<string>%s</string>
+ 								 </dict>
+								 <dict>
+								   <key>kind</key>
+								   <string>full-size-image</string>
+								   <key>needs-shine</key>
+								   <true/>
+								   <key>url</key>
+								   <string>%s</string>
+							     </dict>
                         </array>
                         <key>metadata</key>
                         <dict>
@@ -201,13 +217,16 @@ func signature(appleAccount model.AppleAccount, devicesId string, applePackage m
                             <string>%s</string>
                             <key>kind</key>
                             <string>software</string>
+							 <key>subtitle</key>
+							 <string>%s</string>
                             <key>title</key>
-                            <string>App</string>
+                            <string>%s</string>
                         </dict>
                 </dict>
         </array>
 </dict>
-</plist>`, ipaDownloadHost, applePackage.BundleIdentifier, applePackage.Version)
+</plist>`, ipaDownloadHost, applePackage.IconLink, applePackage.IconLink, applePackage.BundleIdentifier, applePackage.Version, applePackage.Name, applePackage.Name)
+
 	var plistPath = conf.Config.ApplePath.TemporaryDownloadPath + fileName + ".plist"
 	err = tools.CreateFile(plistContent, plistPath)
 	if err != nil {
