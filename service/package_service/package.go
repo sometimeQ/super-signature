@@ -7,7 +7,6 @@ import (
 	"super-signature/util/conf"
 	"super-signature/util/errno"
 	"super-signature/util/tools"
-	"super-signature/util"
 
 
 )
@@ -194,7 +193,7 @@ func creatUDIDMobileconfig(name string, id int) (string, error) {
 
 	// 签名显示已验证
 	var keyPath = dir
-	err = util.RunCmd(fmt.Sprintf("openssl smime -sign -in %s -out %s -signer %s -inkey %s -certfile %s -outform der -nodetach", path, path2, ./server.crt, ./server.key, ./ca.crt))
+	err = tools.RunCmd(fmt.Sprintf("openssl smime -sign -in %s -out %s -signer %s -inkey %s -certfile %s -outform der -nodetach", path, path2, ./server.crt, ./server.key, ./ca.crt))
 // 	var pemPath = fmt.Sprintf("%s%s/pem.pem", conf.Config.ApplePath.AppleAccountPath, iss)
 // 	err = tools.Command(
 // 		"openssl", "x509",
