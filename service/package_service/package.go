@@ -193,17 +193,17 @@ func creatUDIDMobileconfig(name string, id int) (string, error) {
 
 	// 签名显示已验证
 	var keyPath = dir
-	// err = tools.RunCmd(fmt.Sprintf("openssl smime -sign -in %s -out %s -signer %s -inkey %s -certfile %s -outform der -nodetach", path, path2, ./server.crt, ./server.key, ./ca.crt))
+	err = tools.RunCmd(fmt.Sprintf("openssl smime -sign -in %s -out %s -signer ./server.crt -inkey ./server.key -certfile ./ca.crt -outform der -nodetach", path, path2))
 // 	var pemPath = fmt.Sprintf("%s%s/pem.pem", conf.Config.ApplePath.AppleAccountPath, iss)
-	err = tools.Command(
-		"openssl smime -sign",
-		"-in", path,
-		"-signer", ./server.crt,
-		"-inkey", ./server.key,
-		"-certfile", ./ca.crt
-		"-outform der -nodetac",
-		"-out", path2,
-	)
+// 	err = tools.Command(
+// 		"openssl smime -sign",
+// 		"-in", path,
+// 		"-signer", ./server.crt,
+// 		"-inkey", ./server.key,
+// 		"-certfile", ./ca.crt
+// 		"-outform der -nodetac",
+// 		"-out", path2,
+// 	)
 	if err != nil {
 		return "", err
 	}
