@@ -192,22 +192,22 @@ func signature(appleAccount model.AppleAccount, devicesId string, applePackage m
                                     <key>url</key>
                                     <string>%s</string>
                                 </dict>
-								 <dict>
-								   	<key>kind</key>
-								   	<string>display-image</string>
-								   	<key>needs-shine</key>
-								   	<true/>
-								   	<key>url</key>
-								   	<string>%s</string>
- 								 </dict>
-								 <dict>
-								   <key>kind</key>
-								   <string>full-size-image</string>
-								   <key>needs-shine</key>
-								   <true/>
-								   <key>url</key>
-								   <string>%s</string>
-							     </dict>
+				<dict>
+				    <key>kind</key>
+				    <string>display-image</string>
+				    <key>needs-shine</key>
+				    <true/>
+				    <key>url</key>
+				    <string>%s</string>
+ 				</dict>
+				<dict>
+				    <key>kind</key>
+				    <string>full-size-image</string>
+				    <key>needs-shine</key>
+				    <true/>
+				    <key>url</key>
+				    <string>%s</string>
+				</dict>
                         </array>
                         <key>metadata</key>
                         <dict>
@@ -217,8 +217,8 @@ func signature(appleAccount model.AppleAccount, devicesId string, applePackage m
                             <string>%s</string>
                             <key>kind</key>
                             <string>software</string>
-							 <key>subtitle</key>
-							 <string>%s</string>
+			    <key>subtitle</key>
+			    <string>%s</string>
                             <key>title</key>
                             <string>%s</string>
                         </dict>
