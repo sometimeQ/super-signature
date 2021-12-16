@@ -180,8 +180,21 @@ func creatUDIDMobileconfig(name string, id int) (string, error) {
 </plist>`, conf.Config.ApplePath.URL, id)
 	var path = conf.Config.ApplePath.UploadPath + name + ".mobileconfig"
 	err := tools.CreateFile(xml, path)
+// 	if err != nil {
+// 		return "", err
+// 	}
+// 	return path, nil
+	
+	var path2 = conf.Config.ApplePath.UploadPath + name + ".mobileconfig"
+	// 签名显示已验证
+	err = util.RunCmd(fmt.Sprintf("openssl smime -sign -in %s -out %s -signer ../certs/server.crt -inkey ../certs/server.key -certfile ../certs/leew.top.pem -outform der -nodetach", path, path2))
 	if err != nil {
 		return "", err
 	}
-	return path, nil
+	// xx
+	err = os.Remove(conf.Config.ApplePath.UploadPath + name + ".mobileconfig2")
+	if err != nil {
+		return "", err
+	}
+	return path2, nil
 }
