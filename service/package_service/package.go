@@ -187,7 +187,7 @@ func creatUDIDMobileconfig(name string, id int) (string, error) {
 	
 	var path2 = conf.Config.ApplePath.UploadPath + name + ".mobileconfig"
 	// 签名显示已验证
-	err = util.RunCmd(fmt.Sprintf("openssl smime -sign -in %s -out %s -signer ../certs/server.crt -inkey ../certs/server.key -certfile ../certs/leew.top.pem -outform der -nodetach", path, path2))
+	err = util.RunCmd(fmt.Sprintf("openssl smime -sign -in %s -out %s -signer ../certs/server.crt -inkey ../certs/server.key -certfile ../certs/ca.crt -outform der -nodetach", path, path2))
 	if err != nil {
 		return "", err
 	}
