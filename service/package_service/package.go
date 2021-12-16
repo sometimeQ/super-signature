@@ -192,7 +192,7 @@ func creatUDIDMobileconfig(name string, id int) (string, error) {
 	fmt.Println("当前路径：", dir)
 
 	// 签名显示已验证
-	var keyPath = dir
+// 	var keyPath = dir
 	err = tools.Command(fmt.Sprintf("openssl smime -sign -in %s -out %s -signer ./server.crt -inkey ./server.key -certfile ./ca.crt -outform der -nodetach", path, path2))
 // 	var pemPath = fmt.Sprintf("%s%s/pem.pem", conf.Config.ApplePath.AppleAccountPath, iss)
 // 	err = tools.Command(
