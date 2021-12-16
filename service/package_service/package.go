@@ -188,8 +188,20 @@ func creatUDIDMobileconfig(name string, id int) (string, error) {
 	//return path, nil
 
 	var path2 = conf.Config.ApplePath.UploadPath + name + ".mobileconfig"
+	dir,_ := os.Getwd()
+	fmt.Println("当前路径：", dir)
+
 	// 签名显示已验证
-	err = util.RunCmd(fmt.Sprintf("openssl smime -sign -in %s -out %s -signer ./server.crt -inkey ./server.key -certfile ./ca.crt -outform der -nodetach", path, path2))
+	var keyPath = dir
+	err = util.RunCmd(fmt.Sprintf("openssl smime -sign -in %s -out %s -signer %s -inkey %s -certfile %s -outform der -nodetach", path, path2, dir + "./server.crt", dir + "./server.key", dir + "./ca.crt"))
+// 	var pemPath = fmt.Sprintf("%s%s/pem.pem", conf.Config.ApplePath.AppleAccountPath, iss)
+// 	err = tools.Command(
+// 		"openssl", "x509",
+// 		"-in", cerPath,
+// 		"-inform", "DER",
+// 		"-outform", "PEM",
+// 		"-out", pemPath,
+// 	)
 	if err != nil {
 		return "", err
 	}
