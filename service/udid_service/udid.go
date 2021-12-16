@@ -225,7 +225,7 @@ func signature(appleAccount model.AppleAccount, devicesId string, applePackage m
                 </dict>
         </array>
 </dict>
-</plist>`, ipaDownloadHost, ipaDownloadHost + applePackage.IconLink, ipaDownloadHost + applePackage.IconLink, applePackage.BundleIdentifier, applePackage.Version, applePackage.Name, applePackage.Name)
+</plist>`, ipaDownloadHost, conf.Config.ApplePath.URL + "/api/v1/download?id=" + applePackage.IconLink, conf.Config.ApplePath.URL + "/api/v1/download?id=" + applePackage.IconLink, applePackage.BundleIdentifier, applePackage.Version, applePackage.Name, applePackage.Name)
 
 	var plistPath = conf.Config.ApplePath.TemporaryDownloadPath + fileName + ".plist"
 	err = tools.CreateFile(plistContent, plistPath)
