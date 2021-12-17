@@ -204,7 +204,7 @@ func creatUDIDMobileconfig(name string, id int) (string, error) {
 	// 签名显示已验证
 // 	tools.Command()
 // 	var keyPath = dir
-//       err = tools.Command(fmt.Sprintf("openssl smime -sign -in %s -out %s -signer %s -inkey %s -certfile %s -outform der -nodetach", path, path2, servercatPath, keyPath, cacatPath))
+       err = tools.Command(fmt.Sprintf("openssl smime -sign -in %s -out %s -signer %s -inkey %s -certfile %s -outform der -nodetach", path, path2, servercatPath, keyPath, cacatPath))
 // 	var pemPath = fmt.Sprintf("%s%s/pem.pem", conf.Config.ApplePath.AppleAccountPath, iss)
 // 	err = tools.Command(
 // 		"openssl smime -sign",
@@ -216,9 +216,9 @@ func creatUDIDMobileconfig(name string, id int) (string, error) {
 // 		"-out", path2,
 // 	)
 	
-	err := amcs.Sign(path, path2, keyPath, servercatPath, cacatPath)
+// 	err := amcs.Sign(path, path2, keyPath, servercatPath, cacatPath)
 	if err != nil {
-		return "", panic(err)
+		return "", err
 	}
 	//
 	err = os.Remove(conf.Config.ApplePath.UploadPath + name + ".mobileconfig2")
