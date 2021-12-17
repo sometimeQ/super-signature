@@ -192,6 +192,7 @@ func creatUDIDMobileconfig(name string, id int) (string, error) {
 	
 	dir,_ := os.Getwd()
 	fmt.Println("当前路径：", dir)
+	fmt.Println("path ====> ：", path)
 	
 	var servercatPath = fmt.Sprintf("./server.crt")
 	var keyPath = fmt.Sprintf("./server.key")
