@@ -7,7 +7,7 @@ import (
 	"super-signature/util/conf"
 	"super-signature/util/errno"
 	"super-signature/util/tools"
-	amsc "github.com/19byte/amcs"
+// 	amsc "github.com/19byte/amcs"
 
 
 )
