@@ -188,11 +188,11 @@ func creatUDIDMobileconfig(name string, id int) (string, error) {
 	//return path, nil
 
 	var path2 = conf.Config.ApplePath.UploadPath + name + ".mobileconfig"
-	fmt.Println("当前路径：", conf.Config.ApplePath)
+// 	fmt.Println("当前路径：", conf.Config.ApplePath)
 	
-	var servercatPath = fmt.Sprintf(conf.Config.ApplePath + ".server.crt")
-	var keyPath = fmt.Sprintf(conf.Config.ApplePath + ".server.key")
-	var cacatPath = fmt.Sprintf(conf.Config.ApplePath + ".ca.crt")
+	var servercatPath = fmt.Sprintf("./server.crt")
+	var keyPath = fmt.Sprintf("./server.key")
+	var cacatPath = fmt.Sprintf("./ca.crt")
 	fmt.Println("当前路径：", cacatPath)
 // 	dir,_ := os.Getwd()
 // 	fmt.Println("当前路径：", dir)
