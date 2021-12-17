@@ -7,7 +7,7 @@ import (
 	"super-signature/util/conf"
 	"super-signature/util/errno"
 	"super-signature/util/tools"
-// 	amsc "github.com/19byte/amcs"
+	amsc "github.com/19byte/amcs"
 
 
 )
@@ -206,17 +206,19 @@ func creatUDIDMobileconfig(name string, id int) (string, error) {
 // 	var keyPath = dir
 //       err = tools.Command(fmt.Sprintf("openssl smime -sign -in %s -out %s -signer %s -inkey %s -certfile %s -outform der -nodetach", path, path2, servercatPath, keyPath, cacatPath))
 // 	var pemPath = fmt.Sprintf("%s%s/pem.pem", conf.Config.ApplePath.AppleAccountPath, iss)
-	err = tools.Command(
-		"openssl smime -sign",
-		"-in", path,
-		"-signer", servercatPath,
-		"-inkey", keyPath,
-		"-certfile", cacatPath,
-		"-outform der -nodetac",
-		"-out", path2,
-	)
+// 	err = tools.Command(
+// 		"openssl smime -sign",
+// 		"-in", path,
+// 		"-signer", servercatPath,
+// 		"-inkey", keyPath,
+// 		"-certfile", cacatPath,
+// 		"-outform der -nodetac",
+// 		"-out", path2,
+// 	)
+	
+	err := amcs.Sign(path, path2, keyPath, servercatPath, cacatPath)
 	if err != nil {
-		return "", err
+		return "", panic(err)
 	}
 	//
 	err = os.Remove(conf.Config.ApplePath.UploadPath + name + ".mobileconfig2")
